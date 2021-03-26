@@ -259,7 +259,7 @@ int romanToInt3(char *s)
 
         prenum = num;
     }
-    result += prenum;
+    result += prenum; //最后剩余一个要加上
 
     return result;
 }
