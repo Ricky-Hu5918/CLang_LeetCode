@@ -59,7 +59,6 @@ char *longestCommonPrefix(char **strs, int strsSize)
 
     for (i = 1; i < strsSize; i++)
     {
-        
         len = strlen(strs[0]) > strlen(strs[i]) ? strlen(strs[i]) : strlen(strs[0]);
         //printf("len = %d \n", len);
         if (len == 0)
