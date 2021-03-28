@@ -23,6 +23,21 @@ conside strs[0] as a benchmark, using strncmp to find the number of common prefi
 into arry, then find the minimum value in arry, and using strncpy to copy the minimum common prefix to 
 the deststr, and return the deststr
 */
+
+/* 
+//have to initialize the string with \0
+char * str_ptr = (char*) malloc (LEN*sizeof(char));
+memset(str_ptr,'\0',sizeof(LEN*sizeof(char)));
+
+//to check if a string is NULL or does not contain any characters.
+if (str != NULL) {
+    if (strlen(str) == 0) {
+        // it is an empty string
+
+    }
+}
+*/
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -61,7 +76,7 @@ char *longestCommonPrefix(char **strs, int strsSize)
     {
         len = strlen(strs[0]) > strlen(strs[i]) ? strlen(strs[i]) : strlen(strs[0]);
         //printf("len = %d \n", len);
-        if (len == 0)
+        if (len == 0)  //there is a string contained nothing
             return "";
 
         for (j = len; j > 0; j--)
