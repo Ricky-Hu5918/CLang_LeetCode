@@ -99,5 +99,5 @@ int isValid(char * s){
     free(stack);
     stack = NULL;
 
-    return len == 0 ? 1 : 0;
+    return (len == 0) ? 1 : 0;
 }
