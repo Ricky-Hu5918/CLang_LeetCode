@@ -30,6 +30,7 @@ s consists only of printable ASCII characters.
 #endif
 
 int isPalindrome(char *s);
+int isPalindrome2(char *s);
 
 int main(void)
 {
@@ -43,6 +44,13 @@ int main(void)
     result = isPalindrome(s3);
     printf("result = %d \n", result);  //false
     result = isPalindrome(s2);
+    printf("result = %d \n", result);  //true
+
+    result = isPalindrome2(s1);
+    printf("result = %d \n", result);  //true
+    result = isPalindrome2(s3);
+    printf("result = %d \n", result);  //false
+    result = isPalindrome2(s2);
     printf("result = %d \n", result);  //true
 }
 
@@ -80,6 +88,52 @@ int isPalindrome(char * s){
         
         front += 1;
         rear -= 1;
+    }
+
+    if (dest != NULL)
+    {
+        free(dest);
+        dest = NULL;
+    }
+
+    return (front >= rear);
+}
+
+//pointer version
+int isPalindrome2(char * s){
+    char *front, *rear;
+    int i, len, j=0;
+    char *dest;
+
+    len = strlen(s);
+    if (len == 1)
+        return true;
+    
+    dest = (char *)malloc((len+1)*sizeof(char));
+    memset(dest, '\0', (len+1));
+
+    for (i = 0; i < len; i++)
+    {
+        if (!isspace(s[i]) && !ispunct(s[i]))
+        {
+            dest[j] = tolower(s[i]);
+            j++;
+        }
+    }
+    //printf("%s \n", dest);
+    len = strlen(dest);
+    if (len == 0)
+        return true;
+
+    front = dest;
+    rear = dest + (len - 1);
+    while (front < rear)
+    {
+        if (*front != *rear)
+            break;
+        
+        front++;
+        rear--;
     }
 
     if (dest != NULL)
