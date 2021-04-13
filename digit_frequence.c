@@ -20,13 +20,25 @@ Print ten space-separated integers in a single line denoting the frequency of ea
 
 int main() {
     int occurs[10]={0};
-    int i, j=0;
+    int i, j;
     char *s;
 
     s = (char *)malloc(1024*sizeof(char));
+    if (s == NULL)
+    {
+        printf("memory malloc failed. \n");
+        return -1;
+    }
+    memset(s, '\0', 1024);
+
     scanf("%s", s);
     s = (char *)realloc(s, (strlen(s)+1)*sizeof(char));
-     
+    if (s == NULL)
+    {
+        printf("memory remalloc failed. \n");
+        return -1;
+    }
+
     for (i = 0; i < strlen(s); i++)
     {
         if (isdigit(s[i]))
@@ -37,6 +49,7 @@ int main() {
         }
     }
     
+    //output result
     for (i = 0; i< 10; i++)
     {
         printf("%d ", occurs[i]);
