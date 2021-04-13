@@ -53,6 +53,8 @@ int main(void)
 
     result = isValid(s3);
     printf("result2 = %d \n", result);  //1
+
+    return 0;
 }
 
 int isValid(char * s){
@@ -67,6 +69,7 @@ int isValid(char * s){
     if (stack == NULL)
     {
         printf("stack malloc failed. \n");
+        return -1;
     }
     memset(stack, '\0', (len+1));
 
